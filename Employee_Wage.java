@@ -3,15 +3,23 @@ package com.nt.java_Program;
 public class Employee_Wage {
 			int isFullTime=1;
 			int isPartTime=2;
-			int wagePerHour=20;
 			int empHour=0;
-			int empWage=0;
-			int totalEmpWage=0;
-			int num_Working_Days=20;
-			int num_hours_In_Month=100;
+			double empWage=0;
+			double totalEmpWage=0;
 			int totalEmpHours=0;
 			int totalWorkingDays=0;
-			 double empCheck=Math.floor(Math.random()*10)%3;
+			String company;
+			int num_Working_Days;
+			int num_hours_In_Month;
+			int wagePerHour;
+			 public Employee_Wage(String company, int num_Working_Days, int num_hours_In_Month, int wagePerHour) {
+				super();
+				this.company = company;
+				this.num_Working_Days = num_Working_Days;
+				this.num_hours_In_Month = num_hours_In_Month;
+				this.wagePerHour = wagePerHour;
+			}
+			double empCheck=Math.floor(Math.random()*10)%3;
 		   public void Employee_Attendance() {
 			  
 			   if(empCheck==isFullTime) {
@@ -75,7 +83,7 @@ public class Employee_Wage {
 		    		empWage=(empHour*wagePerHour);
 		    		totalEmpWage=totalEmpWage+empWage;
 		    }
-		    	System.out.println("Total employee wage="+totalEmpWage);
+		    	System.out.println("Total employee wage for Company"+ " "+company+"="+totalEmpWage);
 		    }
 		    public void calculateTotalWage_Month() {
 		    	while(totalEmpHours<=num_hours_In_Month && totalWorkingDays<=num_Working_Days ) {
@@ -96,17 +104,25 @@ public class Employee_Wage {
 		    		System.out.println("Days="+totalWorkingDays + "EmpHours="+empHour);
 		    }
 		    	totalEmpWage=totalEmpHours*wagePerHour;
-		    	System.out.println("Total employee wage="+totalEmpWage);
+		    	System.out.println("Total employee wage for Company"+" "+company+"="+totalEmpWage);
 		    }
    public static void main(String[]args) {
 	   System.out.println("Welcome to EmployeeWage Computation Program on Master Branch");
-	   Employee_Wage emp=new Employee_Wage();
+	   Employee_Wage emp=new Employee_Wage("Dmart",20,100,20);
 		emp.Employee_Attendance();
 		emp.calculateFullTime_Wage();
 		emp.calculatePartTime_Wage();
 		emp.checkEmployee_Wage();
 		emp.calculateTotalWage();
 		emp.calculateTotalWage_Month();
+		System.out.println("=============================");
+		 Employee_Wage emp2=new Employee_Wage("bigBasket",20,100,10);
+			emp2.Employee_Attendance();
+			emp2.calculateFullTime_Wage();
+			emp2.calculatePartTime_Wage();
+			emp2.checkEmployee_Wage();
+			emp2.calculateTotalWage();
+			emp2.calculateTotalWage_Month();
 	}	
 }
 
